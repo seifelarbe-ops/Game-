@@ -1,55 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>صيد النقطة</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#e9f1ff;--ink:#12203a;--mute:#5b6b88;--panel:#fff;--hit:#ff4d2e;--line:#c9d8f5}
-@media (prefers-color-scheme:dark){:root{--bg:#0e1730;--ink:#eaf0ff;--mute:#93a3c6;--panel:#16224a;--line:#2a3a6e}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo',Tahoma,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:16px}
-h1{font-size:2rem;font-weight:800;margin:8px 0 4px}
-p{color:var(--mute);margin:0 0 12px;text-align:center}
-.bar{display:flex;gap:12px;width:100%;max-width:420px;margin-bottom:12px}
-.bar div{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:8px 12px;text-align:center}
-.bar b{display:block;font-size:1.6rem;font-weight:800}
-.bar span{font-size:.8rem;color:var(--mute)}
-#arena{position:relative;width:100%;max-width:420px;height:min(60vh,460px);background:var(--panel);border:2px solid var(--line);border-radius:22px;overflow:hidden;touch-action:manipulation}
-#dot{position:absolute;border-radius:50%;background:var(--hit);border:0;padding:0;cursor:pointer;display:none}
-#start{position:absolute;inset:0;margin:auto;height:56px;width:180px;border:0;border-radius:28px;background:var(--ink);color:var(--bg);font:800 1.2rem 'Cairo',Tahoma,sans-serif;cursor:pointer}
-#msg{margin-top:14px;font-weight:800;min-height:1.6em;text-align:center}
-</style>
-</head>
-<body>
-<h1>صيد النقطة</h1>
-<p>اضغط على النقطة الحمرا بأسرع ما تقدر. معاك ٢٠ ثانية.</p>
-<div class="bar">
-  <div><b id="score">0</b><span>نقاطك</span></div>
-  <div><b id="time">20</b><span>ثانية</span></div>
-  <div><b id="best">0</b><span>أعلى نتيجة</span></div>
-</div>
-<div id="arena"><button id="dot" aria-label="نقطة"></button><button id="start">ابدأ</button></div>
-<div id="msg"></div>
-<script>
-(function(){
-var arena=document.getElementById('arena'),dot=document.getElementById('dot'),start=document.getElementById('start');
-var sc=document.getElementById('score'),tm=document.getElementById('time'),bs=document.getElementById('best'),msg=document.getElementById('msg');
-var score=0,left=20,timer=null,best=0;
-try{best=parseInt(localStorage.getItem('dotBest'))||0}catch(e){}
-bs.textContent=best;
-function place(){
-  var w=arena.clientWidth,h=arena.clientHeight;
-  var size=Math.max(34,64-score*1.2);
-  dot.style.width=dot.style.height=size+'px';
-  dot.style.left=Math.random()*(w-size)+'px';
-  dot.style.top=Math.random()*(h-size)+'px';
-}
-function end(){
-  clearInterval(timer);dot.style.display='none';start.style.display='block';start.textContent='العب تاني';
-  var isBest=score>best;
-  if(isBest){best=score;bs.textContent=best;try{localStorage.setItem('dotBest',best)}catch(e){}}
-  msg.textContent=(isBest?'رقم قياسي جديد! ':'خلصت. ')+'جبت '+score+' نقطة. ابعت اللينك لصحابك وشوف مين يكسبك.';
-}
-start.onclick=fu
+body{background:#0a1931;color:#fff;text-align:center;font-family:Arial;margin:0;padding:20px}
+#box{width:90%;max-width:360px;height:400px;background:#11244d;border:3px solid #fff;margin:20px auto;position:relative;border-radius:20px;overflow:hidden}
+#dot{width:50px;height:50px;background:#ff3b3b;border-radius:50%;
